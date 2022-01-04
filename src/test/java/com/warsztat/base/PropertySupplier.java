@@ -1,11 +1,11 @@
 package com.warsztat.base;
 
+import java.io.InputStream;
+import java.util.Properties;
+
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.InputStream;
-import java.util.Properties;
 
 @Slf4j
 @Getter
