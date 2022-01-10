@@ -18,16 +18,14 @@ repositories {
 
 def lombok = 'org.projectlombok:lombok:1.18.20'
 def restAssuredVersion = '4.3.1'
-def guiceVersion = '4.2.3'
 def slf4jVersion = '2.0.0-alpha1'
-def selenideVersion = '6.1.2'
 def apachePoiVersion = '4.1.2'
 def junit5Version = "5.7.2"
+def seleniumVersion = '4.1.1'
 
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: slf4jVersion
     implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    implementation group: 'com.codeborne', name: 'selenide', version: selenideVersion
     implementation group: 'org.apache.poi', name: 'poi', version: apachePoiVersion
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: apachePoiVersion
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: restAssuredVersion
@@ -35,6 +33,10 @@ dependencies {
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
     implementation group: 'org.awaitility', name: 'awaitility', version: '4.0.3'
     testImplementation group: 'org.awaitility', name: 'awaitility', version: '4.0.3'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.0.3'
+    testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.0.3'
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     testImplementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
