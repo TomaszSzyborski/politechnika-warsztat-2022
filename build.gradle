@@ -20,7 +20,7 @@ def lombok = 'org.projectlombok:lombok:1.18.20'
 def restAssuredVersion = '4.3.1'
 def guiceVersion = '4.2.3'
 def slf4jVersion = '2.0.0-alpha1'
-def selenideVersion = '5.23.0'
+def selenideVersion = '6.1.2'
 def apachePoiVersion = '4.1.2'
 def junit5Version = "5.7.2"
 
@@ -126,4 +126,27 @@ task localTests(type: Test, dependsOn: soundOnStartUp) {
     finalizedBy {
         ["Pass", "Fail"].collect { "soundOn$it" }
     }
+}
+
+
+task chrome(type: Test) {
+    useJUnitPlatform()
+    systemProperties['selenide.browser'] = 'chrome'
+//    systemProperties['selenide.headless'] = 'true'
+}
+task firefox(type: Test) {
+    useJUnitPlatform()
+    systemProperties['selenide.browser'] = 'firefox'
+    systemProperties['selenide.headless'] = System.getProperty("headless", "true")
+}
+
+
+task ie(type: Test) {
+    useJUnitPlatform()
+    systemProperties['selenide.browser'] = 'ie'
+}
+
+task edge(type: Test) {
+    useJUnitPlatform()
+    systemProperties['selenide.browser'] = 'edge'
 }
