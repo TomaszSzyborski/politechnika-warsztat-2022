@@ -1,10 +1,14 @@
 package com.warsztat.tests;
 
+import java.time.Duration;
+
 import com.warsztat.base.PropertySupplier;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class SpaghettiTest {
     private final PropertySupplier propertySupplier = new PropertySupplier();
@@ -13,6 +17,8 @@ class SpaghettiTest {
     void spaghettiStyle() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = WebDriverManager.chromedriver().create();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        // this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.get(propertySupplier.getUrl());
         driver.findElement(By.cssSelector("a.login")).click();
         try {
@@ -34,6 +40,9 @@ class SpaghettiTest {
             e.printStackTrace();
         }
         String personalInformation = driver.findElement(By.cssSelector("h3.page-subheading")).getText();
+        assertThat(personalInformation)
+            .as("Personal information after registration")
+            .isEqualTo("YOUR PERSONAL INFORMATION");
         assert personalInformation.equals("YOUR PERSONAL INFORMATION");
     }
 }
